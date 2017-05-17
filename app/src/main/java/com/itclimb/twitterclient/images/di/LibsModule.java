@@ -1,4 +1,4 @@
-package com.itclimb.twitterclient.di;
+package com.itclimb.twitterclient.images.di;
 
 
 import android.support.v4.app.Fragment;

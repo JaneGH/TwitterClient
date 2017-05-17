@@ -1,16 +1,18 @@
-package com.itclimb.twitterclient.main.ui;
+package com.itclimb.twitterclient.hashtags;
 
-import com.itclimb.twitterclient.images.events.ImagesEvent;
-import com.itclimb.twitterclient.images.ui.ImagesView;
+import com.itclimb.twitterclient.hashtags.events.HashtagsEvent;
+import com.itclimb.twitterclient.hashtags.ui.HashtagsView;
 import com.itclimb.twitterclient.lib.base.EventBus;
 
 import org.greenrobot.eventbus.Subscribe;
-public class ImagesPresenterImpl implements ImagesPresenter {
-    private ImagesView view;
-    private EventBus eventBus;
-    private ImagesInteractor interactor;
 
-    public ImagesPresenterImpl(ImagesView view, EventBus eventBus, ImagesInteractor interactor) {
+
+public class HashtagsPresenterImpl implements HashtagsPresenter {
+    private HashtagsView view;
+    private EventBus eventBus;
+    private HashtagsInteractor interactor;
+
+    public HashtagsPresenterImpl(HashtagsView view, EventBus eventBus, HashtagsInteractor interactor) {
         this.view = view;
         this.eventBus = eventBus;
         this.interactor = interactor;
@@ -32,7 +34,7 @@ public class ImagesPresenterImpl implements ImagesPresenter {
     }
 
     @Override
-    public void getImageTweets() {
+    public void getHashtagTweets() {
         if (view != null) {
             view.hideImages();
             view.showProgress();
@@ -42,7 +44,7 @@ public class ImagesPresenterImpl implements ImagesPresenter {
 
     @Override
     @Subscribe
-    public void onEventMainThread(ImagesEvent event) {
+    public void onEventMainThread(HashtagsEvent event) {
         String errorMsg = event.getError();
         if (view != null) {
             view.showImages();
@@ -50,7 +52,7 @@ public class ImagesPresenterImpl implements ImagesPresenter {
             if (errorMsg != null) {
                 view.onError(errorMsg);
             } else {
-                view.setContent(event.getImages());
+                view.setContent(event.getHashtags());
             }
         }
     }

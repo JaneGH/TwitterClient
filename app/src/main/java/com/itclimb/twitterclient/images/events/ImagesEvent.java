@@ -1,4 +1,4 @@
-package com.itclimb.twitterclient.events;
+package com.itclimb.twitterclient.images.events;
 
 
 import com.itclimb.twitterclient.entities.Image;

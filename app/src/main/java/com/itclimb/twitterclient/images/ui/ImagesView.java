@@ -1,4 +1,4 @@
-package com.itclimb.twitterclient.main.ui;
+package com.itclimb.twitterclient.images.ui;
 import com.itclimb.twitterclient.entities.Image;
 
 import java.util.List;

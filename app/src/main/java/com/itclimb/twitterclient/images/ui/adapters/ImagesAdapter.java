@@ -1,4 +1,4 @@
-package com.itclimb.twitterclient.main.ui.adapters;
+package com.itclimb.twitterclient.images.ui.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

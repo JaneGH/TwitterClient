@@ -1,12 +1,9 @@
-package com.itclimb.twitterclient.main.ui.adapters;
+package com.itclimb.twitterclient.images.ui.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-/**
- * Created by ykro.
- */
 public class MainSectionsPagerAdapter extends FragmentPagerAdapter {
     private String[] titles;
     private Fragment[] fragments;

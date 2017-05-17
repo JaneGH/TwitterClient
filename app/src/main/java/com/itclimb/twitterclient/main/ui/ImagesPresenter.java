@@ -1,7 +1,7 @@
 package com.itclimb.twitterclient.main.ui;
 
 
-import com.itclimb.twitterclient.events.ImagesEvent;
+import com.itclimb.twitterclient.images.events.ImagesEvent;
 
 public interface ImagesPresenter {
     void onResume();

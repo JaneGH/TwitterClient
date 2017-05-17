@@ -3,13 +3,15 @@ package com.itclimb.twitterclient;
 import android.app.Application;
 import android.support.v4.app.Fragment;
 
-import com.itclimb.twitterclient.di.DaggerImagesComponent;
-import com.itclimb.twitterclient.di.ImagesComponent;
-import com.itclimb.twitterclient.di.ImagesModule;
-import com.itclimb.twitterclient.di.LibsModule;
-import com.itclimb.twitterclient.images.ImagesFragment;
-import com.itclimb.twitterclient.main.ui.ImagesView;
-import com.itclimb.twitterclient.main.ui.adapters.OnItemClickListener;
+import com.itclimb.twitterclient.hashtags.di.DaggerHashtagsComponent;
+import com.itclimb.twitterclient.images.di.DaggerImagesComponent;
+import com.itclimb.twitterclient.images.di.ImagesComponent;
+import com.itclimb.twitterclient.images.di.ImagesModule;
+import com.itclimb.twitterclient.images.di.LibsModule;
+import com.itclimb.twitterclient.hashtags.di.HashtagsComponent;
+import com.itclimb.twitterclient.hashtags.di.HashtagsModule;
+import com.itclimb.twitterclient.hashtags.ui.HashtagsView;
+import com.itclimb.twitterclient.images.ui.ImagesView;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.*;
 
@@ -31,11 +33,19 @@ public class TwitterClientApp extends Application {
         Fabric.with(this, new Twitter(authConfig));
     }
 
-    public ImagesComponent getImagesComponent(Fragment fragment, ImagesView view, OnItemClickListener clickListener){
+    public ImagesComponent getImagesComponent(Fragment fragment, ImagesView view, com.itclimb.twitterclient.images.ui.adapters.OnItemClickListener clickListener){
         return DaggerImagesComponent
                 .builder()
                 .libsModule(new LibsModule(fragment))
                 .imagesModule(new ImagesModule(view, clickListener))
+                .build();
+    }
+
+    public HashtagsComponent getHashtagsComponent(HashtagsView view, com.itclimb.twitterclient.hashtags.ui.adapters.OnItemClickListener  clickListener){
+        return DaggerHashtagsComponent
+                .builder()
+                .libsModule(new LibsModule(null))
+                .hashtagsModule(new HashtagsModule(view, clickListener))
                 .build();
     }
 }

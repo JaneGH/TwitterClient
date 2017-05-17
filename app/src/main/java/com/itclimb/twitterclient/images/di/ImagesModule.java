@@ -1,4 +1,4 @@
-package com.itclimb.twitterclient.di;
+package com.itclimb.twitterclient.images.di;
 
 import com.itclimb.twitterclient.api.CustomTwitterApiClient;
 import com.itclimb.twitterclient.entities.Image;
@@ -10,9 +10,9 @@ import com.itclimb.twitterclient.main.ui.ImagesPresenter;
 import com.itclimb.twitterclient.main.ui.ImagesPresenterImpl;
 import com.itclimb.twitterclient.main.ui.ImagesRepository;
 import com.itclimb.twitterclient.main.ui.ImagesRepositoryImpl;
-import com.itclimb.twitterclient.main.ui.ImagesView;
-import com.itclimb.twitterclient.main.ui.adapters.ImagesAdapter;
-import com.itclimb.twitterclient.main.ui.adapters.OnItemClickListener;
+import com.itclimb.twitterclient.images.ui.ImagesView;
+import com.itclimb.twitterclient.images.ui.adapters.ImagesAdapter;
+import com.itclimb.twitterclient.images.ui.adapters.OnItemClickListener;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Session;
 

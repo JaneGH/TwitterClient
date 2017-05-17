@@ -10,9 +10,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.itclimb.twitterclient.hashtags.HashtagsFragment;
-import com.itclimb.twitterclient.images.ImagesFragment;
-import com.itclimb.twitterclient.main.ui.adapters.MainSectionsPagerAdapter;
+import com.itclimb.twitterclient.hashtags.ui.HashtagsFragment;
+import com.itclimb.twitterclient.images.ui.ImagesFragment;
+import com.itclimb.twitterclient.images.ui.adapters.MainSectionsPagerAdapter;
 import com.twitter.sdk.android.Twitter;
 
 import butterknife.Bind;

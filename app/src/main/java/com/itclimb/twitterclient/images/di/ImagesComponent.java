@@ -1,6 +1,6 @@
-package com.itclimb.twitterclient.di;
+package com.itclimb.twitterclient.images.di;
 
-import com.itclimb.twitterclient.images.ImagesFragment;
+import com.itclimb.twitterclient.images.ui.ImagesFragment;
 import com.itclimb.twitterclient.main.ui.ImagesPresenter;
 
 import javax.inject.Singleton;

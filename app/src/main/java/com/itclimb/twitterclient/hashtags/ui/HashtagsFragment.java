@@ -1,4 +1,4 @@
-package com.itclimb.twitterclient.images;
+package com.itclimb.twitterclient.hashtags.ui;
 
 
 import android.content.Intent;
@@ -6,7 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,14 +14,14 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
+
 import com.itclimb.twitterclient.R;
 import com.itclimb.twitterclient.TwitterClientApp;
-import com.itclimb.twitterclient.di.ImagesComponent;
-import com.itclimb.twitterclient.entities.Image;
-import com.itclimb.twitterclient.main.ui.ImagesPresenter;
-import com.itclimb.twitterclient.main.ui.ImagesView;
-import com.itclimb.twitterclient.main.ui.adapters.ImagesAdapter;
-import com.itclimb.twitterclient.main.ui.adapters.OnItemClickListener;
+import com.itclimb.twitterclient.entities.Hashtag;
+import com.itclimb.twitterclient.hashtags.HashtagsPresenter;
+import com.itclimb.twitterclient.hashtags.di.HashtagsComponent;
+import com.itclimb.twitterclient.hashtags.ui.adapters.HashtagsAdapter;
+import com.itclimb.twitterclient.hashtags.ui.adapters.OnItemClickListener;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ImagesFragment extends Fragment implements ImagesView, OnItemClickListener {
+public class HashtagsFragment extends Fragment implements HashtagsView, OnItemClickListener {
     @Bind(R.id.progressBar)
     ProgressBar progressBar;
     @Bind(R.id.recyclerView)
@@ -39,11 +39,11 @@ public class ImagesFragment extends Fragment implements ImagesView, OnItemClickL
     FrameLayout container;
 
     @Inject
-    ImagesAdapter adapter;
+    HashtagsAdapter adapter;
     @Inject
-    ImagesPresenter presenter;
+    HashtagsPresenter presenter;
 
-    public ImagesFragment() {
+    public HashtagsFragment() {
     }
 
     @Override
@@ -54,20 +54,21 @@ public class ImagesFragment extends Fragment implements ImagesView, OnItemClickL
         ButterKnife.bind(this, view);
         setupInjection();
         setupRecyclerView();
-        presenter.getImageTweets();
+        presenter.getHashtagTweets();
         return view;
     }
 
     private void setupRecyclerView() {
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
     }
 
     private void setupInjection() {
         TwitterClientApp app = (TwitterClientApp)getActivity().getApplication();
-        ImagesComponent imagesComponent = app.getImagesComponent(this, this, this);
-        presenter = imagesComponent.getPresenter();
-        imagesComponent.inject(this);
+        HashtagsComponent hashtagsComponent = app.getHashtagsComponent(this, this);
+        //presenter = imagesComponent.getPresenter();
+        hashtagsComponent.inject(this);
     }
 
     @Override
@@ -115,13 +116,13 @@ public class ImagesFragment extends Fragment implements ImagesView, OnItemClickL
     }
 
     @Override
-    public void setContent(List<Image> items) {
+    public void setContent(List<Hashtag> items) {
         adapter.setItems(items);
     }
 
     @Override
-    public void onItemClick(Image image) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(image.getTweetUrl()));
+    public void onItemClick(Hashtag hashtag) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(hashtag.getTweetUrl()));
         startActivity(intent);
     }
 
